@@ -1,0 +1,19 @@
+{
+	"message": "Language validation failed",
+	"name": "ValidationError",
+	"errors": {
+	  "title": {
+		"message": "1 is not a valid language name!",
+		"name": "ValidatorError",
+		"properties": {
+		  "type": "user defined",
+		  "message": "{VALUE} is not a valid language name!",
+		  "path": "title",
+		  "value": "1"
+		},
+		"kind": "user defined",
+		"path": "title",
+		"value": "1"
+	  }
+	}
+}

@@ -1,0 +1,41 @@
+{
+  "name": "MVC",
+  "version": "0.0.1",
+  "description": "MVC",
+  "main": "index.html",
+  "author": "Armen Chakhalyan",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-concat": "*",
+    "gulp-csso": "*",
+    "gulp-gh-pages": "*",
+    "gulp-imagemin": "*",
+    "gulp-jade": "*",
+    "gulp-myth": "*",
+    "gulp-sourcemaps": "*",
+    "gulp.spritesmith": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "merge-stream": "*",
+    "connect-livereload": "*",
+    "gulp-express": "*",
+    "express": "*",
+    "gulp-iconfont": "*",
+    "gulp-bower": "*",
+	"promise": "*",
+	"mongoose": "*",
+	"nconf": "*",
+	"faker": "*",
+	"oauth2orize": "*",
+	"passport": "*",
+	"passport-http": "*",
+	"passport-http-bearer": "*",
+	"passport-oauth2-client-password": "*",
+	"body-parser": "*",
+    "gulp-wrap-amd": "*"
+  },
+  "dependencies": {
+    "gulp": "*"
+  }
+}

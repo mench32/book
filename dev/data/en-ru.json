@@ -1,0 +1,63 @@
+{
+  "language": {
+    "_id": "ObjectId",
+    "name": "String"
+  },
+
+  "type": {
+    "_id": "ObjectId",
+    "name": "String"
+  },
+
+  "word": {
+    "_id": "ObjectId",
+    "name": "String",
+    "author": "ObjectId(user)",
+    "language": "ObjectId(language)",
+    "translates": [
+      {
+        "number": "Integer",
+        "name": "String",
+        "language": "ObjectId(language)",
+        "rating": "Integer"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "ObjectId",
+        "number": "integer",
+        "author": "ObjectId(user)"
+      }
+    ]
+  },
+
+  "lesson": {
+    "_id": "ObjectId",
+    "name": "String",
+    "number": "Integer",
+    "nativeLanguage": "ObjectId(language)",
+    "studyLanguage": "ObjectId(language)",
+    "levels": [
+      {
+        "name": "String",
+        "number": "Integer",
+        "type": "ObjectId(type)",
+        "word": "ObjectId(word)"
+      }
+    ]
+  },
+
+  "user": {
+    "_id": "ObjectId",
+    "name": "String",
+    "email": "String",
+    "password": "String",
+    "salt": "String",
+    "experience": [
+      {
+        "lesson": "ObjectId(lesson)",
+        "level": "Integer"
+      }
+    ]
+  }
+}

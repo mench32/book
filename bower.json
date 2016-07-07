@@ -1,0 +1,20 @@
+{
+  "name": "blank",
+  "description": "blank gulp",
+  "dependencies": {
+	"requirejs": "*",
+    "jquery": "*",
+    "underscore": "*",
+    "backbone": "*",
+    "backgrid": "*",
+    "jade": "*"
+
+  },
+  "private": true,
+  "version": "0.0.1",
+  "homepage": "https://github.com/mench32/blank",
+  "authors": [
+    "Armen <mench256@gmail.com>"
+  ],
+  "license": "MIT"
+}
