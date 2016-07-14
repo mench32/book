@@ -14,8 +14,7 @@ define([
         urlRoot: 'api/languages',
 
         defaults: {
-            title: "",
-            name: ""
+            title: ""
         }
 
     });

@@ -41,6 +41,7 @@ define([
 
         //Метод открисовки шаблона
         render: function (data) {
+            console.log('reneder')
             var html;
             if (!data) {
                 if (this.model) {
@@ -106,7 +107,7 @@ define([
             this.on("render", this.onRenderHandler.bind(this));
             this
                 .loadTemplate(this.template)
-                .then(this.render.bind(this));
+                // .then(this.render.bind(this));
             return this;
         }
     });

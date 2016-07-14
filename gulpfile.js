@@ -194,13 +194,13 @@ gulp.task('server', function(){
 
 //Слушаем изменения в папках
 gulp.task('watch', function() {
-    gulp.start(['images', 'sprite', 'jade', "jade-runtime", 'html', 'stylus', 'js', 'fonts', 'bower']);
+    gulp.start(['images', 'sprite', 'jade', 'jade-runtime', 'html', 'stylus', 'js', 'fonts', 'bower']);
 
     gulp.watch([path.dev.stylus + '/**/*.styl'], ['stylus']);
     gulp.watch([path.dev.fonts + '/**/*.*'],     ['fonts']);
     //gulp.watch([path.dev.data + '/**/*.*'],      ['data']);
     gulp.watch([path.dev.jade + '/**/*.jade'],   ['jade']);
-    gulp.watch([path.dev.js + '/view/**/*.jade'], ['jade-runtime']);
+    gulp.watch([path.dev.js + '/views/**/*.jade'], ['jade-runtime']);
     gulp.watch([path.dev.html + '/**/*.html'],   ['html']);
     gulp.watch([path.dev.js + '/**/*.js'],       ['js']);
     gulp.watch([path.dev.images + '/**/*.*'],    ['images']);

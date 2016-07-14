@@ -1,0 +1,14 @@
+.list__header Languages
+.list__items
+    .list__items__item.list__items__item--head
+        .list__items__item__col.list__items__item__col--remove
+        .list__items__item__col.list__items__item__col--id ID
+        .list__items__item__col.list__items__item__col--title Title
+    each item in data.models
+        .list__items__item
+            .list__items__item__col.list__items__item__col--remove.js-remove(data-id=item.attributes._id)
+            .list__items__item__col.list__items__item__col--id #{ item.attributes._id }
+            .list__items__item__col.list__items__item__col--title #{ item.attributes.title }
+.list__footer
+    input.list__footer__title.js-field(data-field='title')
+    button.list__footer__add.js-add +

@@ -3,7 +3,7 @@ var db = mongoose.connection;
 var Schema = mongoose.Schema;
 var config = require('./config');
 
-mongoose.connect(config.get('mongoose:uri'));
+mongoose.connect("mongodb://localhost/test");
 
 db.on('error', console.error);
 
@@ -46,10 +46,12 @@ validate.email = function(value, callback) {
         return false;
     }
 };
-validate.word = function() {
+validate.word = function(value, callback) {
     var word = /^[a-zA-Zа-яА-Я]+$/;
     if ( typeof value === 'string' && value.length > 0 && value.length < 64 && word.test(value) ) {
-        base.User.findOne({ login: value }, function (error, data) {
+        console.log('value', value)
+        base.Word.findOne({ name: value }, function (error, data) {
+            console.log('word', data);
             callback(data == null);
         });
     } else {
@@ -86,22 +88,7 @@ var Word = new Schema({
             message: '{VALUE} this language does not exist!'
         },
         required: true
-    },
-    translate: [{
-        name: {
-            type: String,
-            required: true
-        },
-        language: {
-            type: Schema.ObjectId,
-            ref: 'Language',
-            required: true
-        },
-        order: {
-            type: Number,
-            required: true
-        }
-    }]
+    }
 });
 // Модель GROUP
 var Group = new Schema({
@@ -178,6 +165,31 @@ base.Language = mongoose.model("Language", Language);
 base.Word = mongoose.model("Word", Word);
 base.Group = mongoose.model("Group", Group);
 base.User = mongoose.model("User", User);
+
+
+Language.eachPath(function(path) {
+    console.log('path', Language.paths[path].instance)
+});
+
+controller.post = function(model, fields) {
+    var obj = new model(fields);
+    return new Promise(function(resolve, reject) {
+        obj.save(function (error, data) {
+            if (!error) {
+                resolve(data);
+            } else {
+                if (error.name == 'ValidationError') reject({
+                    statusCode: 400,
+                    error: 'error.errors.title.message'
+                });
+                else reject({
+                    statusCode: 500,
+                    error: 'POST Server error'
+                });
+            }
+        });
+    });
+};
 
 controller.get = function(model, params, filter, fields) {
     var result = {};
@@ -277,6 +289,30 @@ controller.update = function (model, id, body) {
         });
     });
 
+};
+
+controller.delete = function (model, id) {
+    return new Promise(function(resolve, reject) {
+        model.findById(id, function (err, data) {
+            if (!data) {
+                reject({
+                    statusCode: 404,
+                    error: { error: 'DELETE Not found' }
+                })
+            }
+
+            return data.remove(function (err) {
+                if ( !err ) {
+                    resolve({ status: 'OK' });
+                } else {
+                    reject({
+                        statusCode: 500,
+                        error: 'DELETE Server error'
+                    });
+                }
+            });
+        });
+    });
 };
 
 

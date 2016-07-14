@@ -7,6 +7,7 @@ requirejs.config({
     baseUrl: "/js",
     paths: {
         jquery: "vendor/jquery/dist/jquery",
+        jqueryui: "vendor/jqueryui/jquery-ui",
         underscore: "vendor/underscore/underscore",
         backbone: "vendor/backbone/backbone",
         jade: "vendor/jade/runtime",

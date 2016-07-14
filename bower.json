@@ -4,6 +4,7 @@
   "dependencies": {
 	"requirejs": "*",
     "jquery": "*",
+    "jqueryui": "*",
     "underscore": "*",
     "backbone": "*",
     "backgrid": "*",

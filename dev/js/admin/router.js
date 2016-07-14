@@ -12,8 +12,9 @@ function createList(controller, model, name) {
     } else {
         if (app.pageView.close) app.pageView.close();
         require(["admin/controllers/" + controller, "admin/models/" + model], function (Controller, Model) {
+            console.log('req');
             app.pageView = new Controller({
-                template: "home",
+                template: name,
                 model: new Model(),
                 className: 'list list--' + name,
                 name: name
@@ -28,7 +29,7 @@ function createList(controller, model, name) {
 function createForm(controller, model, id, name) {
 
     if (app.pageView.close) app.pageView.close();
-    require(["controller/" + controller, "model/" + model], function (Controller, Model) {
+    require(["controllers/" + controller, "models/" + model], function (Controller, Model) {
         app.pageView = new Controller({
             template: 'form',
             model: new Model(name == 'user' ? {login: id} : {guid: id}),
@@ -39,12 +40,14 @@ function createForm(controller, model, id, name) {
     });
 
 }
+
     return Backbone.Router.extend({
 
         routes: {
 
             'home(/)':          'home',
-            'language(/)':      'language',
+            'languages(/)':     'languages',
+            'words(/)':         'words',
             '*path':            'home'
 
 
@@ -54,51 +57,14 @@ function createForm(controller, model, id, name) {
             createList('controller', 'model-list-languages', 'languages');
         },
 
-        language: function() {
-
-            require(["backgrid", "admin/models/model-list-languages"], function (Backgrid, Model) {
-
-                var columns = [
-                    {
-                        name: "_id",
-                        label: "ID",
-                        editable: false,
-                        cell: "string"
-                    },
-                    {
-                        name: "title",
-                        label: "Title",
-                        cell: "string"
-                    },
-                    {
-                        name: "remove",
-                        label: "",
-                        editable: false,
-                        cell: Backgrid.Cell.extend({
-                            render: function () {
-                                this.$el.html('<div class="cell--remove">x</div>');
-                                return this;
-                            }
-                        })
-                    }
-                ];
-
-                var model = new Model();
-                var collection = model.get('data');
-                collection.on('change', function(model) {
-                    model.save();
-                });
-                var grid = new Backgrid.Grid({
-                    columns: columns,
-                    collection: collection
-                });
-
-
-                model.fetch({reset: true}).then(function() {
-                    $("#content").html(grid.render().el);
-                });
-
-            });
+        languages: function() {
+            console.log('lang');
+            createList('controller-list', 'model-list-languages', 'languages');
+        },
+        words: function() {
+            console.log('word');
+            createList('controller-list', 'model-list-words', 'words');
         }
+
     }); 
 });

@@ -1,0 +1,17 @@
+.list__header Words
+.list__items
+    .list__items__item.list__items__item--head
+        .list__items__item__col.list__items__item__col--remove
+        .list__items__item__col.list__items__item__col--id ID
+        .list__items__item__col.list__items__item__col--name Name
+        .list__items__item__col.list__items__item__col--language Language
+    each item in data.models
+        .list__items__item
+            .list__items__item__col.list__items__item__col--remove.js-remove(data-id=item.attributes._id)
+            .list__items__item__col.list__items__item__col--id #{ item.attributes._id }
+            .list__items__item__col.list__items__item__col--name #{ item.attributes.name }
+            .list__items__item__col.list__items__item__col--language #{ item.attributes.language }
+.list__footer
+    input.list__add__item.js-field(data-field='name')
+    span.list__add__item.js-field-complete(data-model='model-list-languages' data-field='language')
+    button.list__add__btn.js-add +

@@ -1,43 +1,58 @@
 .menu
-    background #eee
-    height 28px
-    margin-bottom 20px
+    padding 20px 10px
     &__item
-        color #555
-        height 28px
-        line-height 28px
-        padding 0 20px
-        display inline-block
-        text-decoration none
-        &:hover
-            color #555
-            background #ddd
+        padding 10px
 
-
-.content
-    border 1px dashed #ddd
-    width 95%
-    margin 0 auto
-    padding 10px
-    .form-search
-        width: 1024px
-
-.table
-    display table
-    width 100%
-    margin 10px
-    border 1px dashed #ddd
-.row
-    display table-row
-.cell
-    width 200px
-    overflow hidden
-    display table-cell
-    margin 2px
-    padding 10px
-    vertical-align middle
-    text-overflow ellipsis
-    border 1px solid #ddd
-
-.cell-text
-    display table-cell
+.list
+    width: 90%
+    margin 20px auto
+    &__items
+        padding 10px 0
+        &__item
+            row()
+            &--head
+                font-weight 600
+                cursor pointer
+                .list__items__item__col--remove:after
+                    display none
+            &__col
+                grid(3)
+                height 28px
+                border 1px solid #ccc
+                line-height 28px
+                overflow hidden
+                text-overflow ellipsis
+                white-space nowrap
+                padding: 0 10px
+                &--remove
+                    grid(1)
+                    position relative
+                    &:after
+                        content 'x'
+                        text-align center
+                        display block
+                        width 22px
+                        height 22px
+                        line-height 22px
+                        cursor pointer
+                        top 50%
+                        left 50%
+                        margin-left: -11px;
+                        margin-top: -11px;
+                        background #ccc
+                        position absolute
+                        border-radius 50%
+    &--languages
+        .list__items__item__col
+            &--id
+                grid(1)
+            &--title
+                grid(10)
+    &--words
+        .list__items__item__col
+            &--id
+                grid(1)
+            &--name
+                grid(5)
+            &--language
+                grid(5)

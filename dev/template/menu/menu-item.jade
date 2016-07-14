@@ -1,8 +1,0 @@
-script(id="menu-item", type="text/x-handlebars-template")
-    a.menu__item(href='{{this.href}}') {{this.title}}
-script(id="list-item", type="text/x-handlebars-template")
-    {{#each this.attributes}}
-    div.cell {{this}}
-    {{/each}}
-    div.cell
-        button(id="{{this.attributes._id}}" class="remove-item") x
